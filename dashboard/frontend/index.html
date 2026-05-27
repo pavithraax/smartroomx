@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartRoom-X</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+
+        <div class="logo">
+
+            <h1>SmartRoom-X</h1>
+
+            <p>
+                Intelligent IoT + RF Automation Platform
+            </p>
+
+        </div>
+
+        <div class="status">
+            ● SYSTEM ONLINE
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>Occupancy Status</h2>
+
+            <p>
+                Real-time room activity monitoring
+            </p>
+
+            <div class="big-status" id="motionStatus">
+                Idle
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Device Control</h2>
+
+            <p>
+                Appliance management interface
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="turnOn()">
+                    Activate
+                </button>
+
+                <button onclick="turnOff()">
+                    Deactivate
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Wireless Analytics</h2>
+
+            <p>
+                2.4 GHz Communication Layer
+            </p>
+
+            <div class="signal">
+                -61 dBm
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>RF Optimization</h2>
+
+            <ul>
+
+                <li>Antenna Experimentation</li>
+
+                <li>RSSI Analysis</li>
+
+                <li>Future VNA Validation</li>
+
+                <li>Future SDR Monitoring</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+   <div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>System Telemetry</h2>
+
+        <p>CPU Usage</p>
+        <div class="signal">21%</div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Network Latency</h2>
+
+        <p>Wireless Response Time</p>
+        <div class="signal">14ms</div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Node Health</h2>
+
+        <p>ESP32 Runtime Status</p>
+        <div class="big-status">
+            Stable
+        </div>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>Live Activity</h2>
+
+        <div id="logs">
+
+            <p>[SYSTEM] SmartRoom-X initialized</p>
+
+            <p>[NETWORK] Wi-Fi connected</p>
+
+            <p>[RF] RSSI stable at -61 dBm</p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Environment Status</h2>
+
+        <p>Temperature</p>
+        <div class="signal">24°C</div>
+
+        <p>Humidity</p>
+        <div class="signal">61%</div>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>Wireless Signal Analytics</h2>
+
+        <canvas id="signalChart"></canvas>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>Network Topology</h2>
+
+        <div class="topology">
+
+            <div class="node">
+                ESP32
+            </div>
+
+            <div class="line"></div>
+
+            <div class="node mqtt">
+                MQTT
+            </div>
+
+            <div class="line"></div>
+
+            <div class="node dashboard">
+                Dashboard
+            </div>
+
+            <div class="line"></div>
+
+            <div class="node rf">
+                RF Layer
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>RF Signal Radar</h2>
+
+        <div class="radar-container">
+
+            <div class="radar">
+
+                <div class="ring ring1"></div>
+                <div class="ring ring2"></div>
+                <div class="ring ring3"></div>
+
+                <div class="sweep"></div>
+
+                <div class="center-dot"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>Smart Room Visualization</h2>
+
+        <div class="room">
+
+            <div class="ceiling-light" id="light"></div>
+
+            <div class="table"></div>
+
+            <div class="device-screen"></div>
+
+            <div class="person" id="person"></div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="grid" style="margin-top:25px;">
+
+    <div class="card">
+
+        <h2>AI Occupancy Analytics</h2>
+
+        <p>
+            Predicted Occupancy Probability
+        </p>
+
+        <div class="signal" id="occupancyPrediction">
+            78%
+        </div>
+
+        <p>
+            Automation Confidence
+        </p>
+
+        <div class="big-status" id="confidenceStatus">
+            HIGH
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Energy Intelligence</h2>
+
+        <p>
+            Estimated Energy Optimization
+        </p>
+
+        <div class="signal" id="energyScore">
+            34%
+        </div>
+
+        <p>
+            Active Optimization Mode
+        </p>
+
+        <div class="big-status">
+            ENABLED
+        </div>
+
+    </div>
+
+</div>
+<div class="footer">
+
+    SmartRoom-X • Embedded Systems • IoT • RF Engineering
+
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
